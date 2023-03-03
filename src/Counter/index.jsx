@@ -57,7 +57,11 @@ export default class Counter extends Component {
 							<img src="./assets/plus.svg" alt="Adicionar +1" />
 						</ButtonPlus>
 
-						<ButtonReset title="reset" onClick={this.reset}>
+						<ButtonReset
+							title="reset"
+							onClick={this.reset}
+							disabled={MinLimitReached}
+						>
 							<img src="./assets/reset.svg" alt="Resetar Número" />
 						</ButtonReset>
 

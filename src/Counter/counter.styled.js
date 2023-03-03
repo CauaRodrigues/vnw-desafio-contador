@@ -71,7 +71,7 @@ export const ButtonReset = styled.button`
 	padding: 12px;
 	border-radius: 50%;
 	display: flex;
-	cursor: pointer;
+	cursor: ${(props) => (props.disabled ? "auto" : "pointer")};
 `;
 
 export const ButtonMinus = styled(ButtonPlus)`

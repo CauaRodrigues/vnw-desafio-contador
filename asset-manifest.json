@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/vnw-desafio-contador/static/js/main.d910e453.js",
+    "main.js": "/vnw-desafio-contador/static/js/main.1809d811.js",
     "index.html": "/vnw-desafio-contador/index.html",
-    "main.d910e453.js.map": "/vnw-desafio-contador/static/js/main.d910e453.js.map"
+    "main.1809d811.js.map": "/vnw-desafio-contador/static/js/main.1809d811.js.map"
   },
   "entrypoints": [
-    "static/js/main.d910e453.js"
+    "static/js/main.1809d811.js"
   ]
 }

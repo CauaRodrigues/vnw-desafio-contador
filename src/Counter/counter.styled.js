@@ -8,7 +8,7 @@ export const Box = styled.section`
 	gap: 1rem;
 
 	border-radius: 32px;
-	background-color: rgba(125, 139, 157, 0.56);
+	background-color: rgba(125, 139, 157, 1);
 
 	.content {
 		display: flex;

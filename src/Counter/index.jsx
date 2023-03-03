@@ -8,9 +8,15 @@ import {
 	GroupBtns,
 } from "./counter.styled";
 
+import { ReactComponent as Plus } from "../assets/plus.svg";
+import { ReactComponent as Reset } from "../assets/reset.svg";
+import { ReactComponent as Minus } from "../assets/minus.svg";
+import { createGlobalStyle } from "styled-components";
+
 export default class Counter extends Component {
 	state = {
 		number: 0,
+		color: "#ffffff",
 	};
 
 	plus = () => {
@@ -18,6 +24,8 @@ export default class Counter extends Component {
 			number:
 				this.state.number >= 10 ? this.state.number : this.state.number + 1,
 		});
+
+		this.handlerBackground();
 	};
 
 	minus = () => {
@@ -25,6 +33,8 @@ export default class Counter extends Component {
 			number:
 				this.state.number <= 0 ? this.state.number : this.state.number - 1,
 		});
+
+		this.handlerBackground();
 	};
 
 	reset = () => {
@@ -33,14 +43,26 @@ export default class Counter extends Component {
 		});
 	};
 
+	handlerBackground = () => {
+		let [Hexa, color] = ["0123456789ABCDEF", "#"];
+		for (let i = 0; i < 6; i++) {
+			color += Hexa[Math.floor(Math.random() * 16)];
+		}
+		this.setState({
+			color,
+		});
+	};
+
 	render() {
-		const { number } = this.state;
+		const { number, color } = this.state;
 
 		const MaxLimitReached = number >= 10 ? true : false;
 		const MinLimitReached = number <= 0 ? true : false;
 
 		return (
 			<Box>
+				<ChangeBg color={color} />
+
 				{MaxLimitReached && <p>Limite Máximo Atingindo</p>}
 
 				<div className="content">
@@ -54,7 +76,7 @@ export default class Counter extends Component {
 							onClick={this.plus}
 							disabled={MaxLimitReached}
 						>
-							<img src="./assets/plus.svg" alt="Adicionar +1" />
+							<Plus />
 						</ButtonPlus>
 
 						<ButtonReset
@@ -62,7 +84,7 @@ export default class Counter extends Component {
 							onClick={this.reset}
 							disabled={MinLimitReached}
 						>
-							<img src="./assets/reset.svg" alt="Resetar Número" />
+							<Reset />
 						</ButtonReset>
 
 						<ButtonMinus
@@ -70,7 +92,7 @@ export default class Counter extends Component {
 							onClick={this.minus}
 							disabled={MinLimitReached}
 						>
-							<img src="./assets/minus.svg" alt="Remover -1" />
+							<Minus />
 						</ButtonMinus>
 					</GroupBtns>
 				</div>
@@ -80,3 +102,9 @@ export default class Counter extends Component {
 		);
 	}
 }
+
+const ChangeBg = createGlobalStyle`
+	body {
+		background: ${(props) => props.color};
+	}
+`;
